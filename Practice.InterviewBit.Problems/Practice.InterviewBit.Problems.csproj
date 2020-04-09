@@ -15,7 +15,6 @@
     <Folder Include="ProblemSet\Level3\TwoPointers\" />
     <Folder Include="ProblemSet\Level3\Strings\" />
     <Folder Include="ProblemSet\Level6\HeapsAndMaps\" />
-    <Folder Include="ProblemSet\Level6\TreeDataStructure\" />
   </ItemGroup>
 
 </Project>
