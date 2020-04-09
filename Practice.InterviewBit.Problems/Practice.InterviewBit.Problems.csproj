@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ProblemSet\Level4\" />
+    <Folder Include="ProblemSet\Level5\" />
+    <Folder Include="ProblemSet\Level2\Math\" />
+    <Folder Include="ProblemSet\Level3\BitManipulation\" />
+    <Folder Include="ProblemSet\Level4\LinkedLists\" />
+    <Folder Include="ProblemSet\Level5\Backtracking\" />
+    <Folder Include="ProblemSet\Level5\Hashing\" />
+    <Folder Include="ProblemSet\Level4\StacksAndQueues\" />
+    <Folder Include="ProblemSet\Level3\TwoPointers\" />
+    <Folder Include="ProblemSet\Level3\Strings\" />
+    <Folder Include="ProblemSet\Level6\HeapsAndMaps\" />
+    <Folder Include="ProblemSet\Level6\TreeDataStructure\" />
+  </ItemGroup>
+
+</Project>
