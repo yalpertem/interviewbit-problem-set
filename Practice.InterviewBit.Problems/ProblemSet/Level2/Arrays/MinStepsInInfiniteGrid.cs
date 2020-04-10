@@ -50,9 +50,9 @@ namespace Practice.InterviewBit.Problems.ProblemSet.Level2.Arrays
 
             for (var i = 1; i < list1.Count; i++)
             {
-                var diffX = Math.Abs(list1[i - 1] - list1[i]);
-                var diffY = Math.Abs(list2[i - 1] - list2[i]);
-                steps += Math.Max(diffX, diffY);
+                var diffX = System.Math.Abs(list1[i - 1] - list1[i]);
+                var diffY = System.Math.Abs(list2[i - 1] - list2[i]);
+                steps += System.Math.Max(diffX, diffY);
             }
             return steps;
         }
