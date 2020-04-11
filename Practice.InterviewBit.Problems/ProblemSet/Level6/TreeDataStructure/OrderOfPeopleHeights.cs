@@ -8,8 +8,9 @@ namespace Practice.InterviewBit.Problems.ProblemSet.Level6.TreeDataStructure
     {
         private int[] segmentTree;
 
-        public List<int> order(List<int> A, List<int> B)
+        public List<int> Solve(List<int> A, List<int> B)
         {
+            //TODO: couldn't solve yet.
             var sortedHeights = new List<Person>();
             var result = new List<int>();
             for (var i = 0; i < A.Count; i++)
