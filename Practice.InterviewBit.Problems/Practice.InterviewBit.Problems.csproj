@@ -12,7 +12,6 @@
     <Folder Include="ProblemSet\Level5\Backtracking\" />
     <Folder Include="ProblemSet\Level5\Hashing\" />
     <Folder Include="ProblemSet\Level4\StacksAndQueues\" />
-    <Folder Include="ProblemSet\Level3\TwoPointers\" />
   </ItemGroup>
 
 </Project>
