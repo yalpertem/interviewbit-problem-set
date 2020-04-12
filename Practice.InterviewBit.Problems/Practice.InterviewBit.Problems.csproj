@@ -6,9 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ProblemSet\Level4\" />
     <Folder Include="ProblemSet\Level5\" />
-    <Folder Include="ProblemSet\Level4\LinkedLists\" />
     <Folder Include="ProblemSet\Level5\Backtracking\" />
     <Folder Include="ProblemSet\Level5\Hashing\" />
     <Folder Include="ProblemSet\Level4\StacksAndQueues\" />
