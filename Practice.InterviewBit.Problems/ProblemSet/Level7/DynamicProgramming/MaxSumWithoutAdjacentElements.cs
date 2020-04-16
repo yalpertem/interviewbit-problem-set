@@ -4,86 +4,88 @@ using System.Text;
 
 namespace Practice.InterviewBit.Problems.ProblemSet.Level7.DynamicProgramming
 {
+    /// <summary>
+    /// Max Sum Without Adjacent Elements
+    /// https://www.interviewbit.com/problems/max-sum-without-adjacent-elements/
+    /// </summary>
     public class MaxSumWithoutAdjacentElements
     {
-        public int adjacent(List<List<int>> A)
+        /*
+        Given a 2 x N grid of integer, A, choose numbers such that the sum of the numbers
+        is maximum and no two chosen numbers are adjacent horizontally, vertically or diagonally, and return it.
+        Note: You can choose more than 2 numbers.
+
+        Input Format:
+        The first and the only argument of input contains a 2d matrix, A.
+        Output Format:
+        Return an integer, representing the maximum possible sum.
+        Constraints:
+        1 <= N <= 20000
+        1 <= A[i] <= 2000
+
+        Example:
+
+        Input 1:
+            A = [   [1]
+                    [2]    ]
+        Output 1:
+            2
+        Explanation 1:
+            We will choose 2.
+        
+        Input 2:
+            A = [   [1, 2, 3, 4]
+                    [2, 3, 4, 5]    ]
+        Output 2:
+            We will choose 3 and 5.
+        */
+
+        public int Solve(List<List<int>> A)
         {
             if (A == null || A.Count == 0 || A[0].Count == 0)
             {
                 return 0;
             }
-            var maxAdjacent = int.MinValue;
-            if (A[0].Count < 3)
+
+            var flattened = FlattenList(A);
+            var dp = new int[flattened.Count];
+            for (var i = 0; i < dp.Length; i++)
             {
-                for (var i = 0; i < A.Count; i++)
-                {
-                    for (var j = 0; j < A[0].Count; j++)
-                    {
-                        maxAdjacent = Math.Max(maxAdjacent, A[i][j]);
-                    }
-                }
-                return maxAdjacent;
+                dp[i] = -1;
+            }
+            var result = CalculateMaxValues(flattened, 0, dp);
+            return result;
+        }
+
+        private int CalculateMaxValues(List<int> flattened, int start, int[] dp)
+        {
+            if (start >= dp.Length)
+            {
+                return 0;
             }
 
-            var oneDimensionList = new List<int>();
+            if (dp[start] != -1)
+            {
+                return dp[start];
+            }
+
+            var candidate1 = flattened[start] + CalculateMaxValues(flattened, start + 2, dp);
+            var candidate2 = CalculateMaxValues(flattened, start + 1, dp);
+            var max = Math.Max(candidate1, candidate2);
+            dp[start] = max;
+            return max;
+        }
+
+        private List<int> FlattenList(List<List<int>> A)
+        {
+            var flattened = new List<int>();
             for (var i = 0; i < A[0].Count; i++)
             {
                 var num = Math.Max(A[0][i], A[1][i]);
-                oneDimensionList.Add(num);
+                flattened.Add(num);
             }
-
-            var dpFromStart = GetMaxElementsFromStart(oneDimensionList);
-            oneDimensionList.Reverse();
-            var dpFromEnd = GetMaxElementsFromStart(oneDimensionList);
-            Array.Reverse(dpFromEnd);
-            oneDimensionList.Reverse();
-
-            for (var i = 0; i < oneDimensionList.Count; i++)
-            {
-                Console.Write(oneDimensionList[i] + " ");
-            }
-            Console.WriteLine("------------");
-
-            for (var i = 0; i < dpFromStart.Length; i++)
-            {
-                Console.Write(dpFromStart[i] + " ");
-            }
-            Console.WriteLine("");
-
-            for (var i = 0; i < dpFromEnd.Length; i++)
-            {
-                Console.Write(dpFromEnd[i] + " ");
-            }
-            Console.WriteLine("");
-
-
-            for (var i = 0; i < oneDimensionList.Count; i++)
-            {
-                var num = oneDimensionList[i];
-                var pairCandidate = int.MinValue;
-                if (i - 2 >= 0)
-                {
-                    pairCandidate = dpFromStart[i - 2];
-                }
-                if (i + 2 < dpFromEnd.Length)
-                {
-                    pairCandidate = Math.Max(pairCandidate, dpFromEnd[i + 2]);
-                }
-                maxAdjacent = Math.Max(maxAdjacent, num + pairCandidate);
-            }
-
-            return maxAdjacent;
+            return flattened;
         }
 
-        private int[] GetMaxElementsFromStart(List<int> list)
-        {
-            var dp = new int[list.Count];
-            dp[0] = list[0];
-            for (var i = 1; i < dp.Length; i++)
-            {
-                dp[i] = Math.Max(dp[i], list[i]);
-            }
-            return dp;
-        }
     }
 }
